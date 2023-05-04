@@ -7,6 +7,7 @@ class Student:
         self.courses_in_progress = []
         self.grades = {}
 
+
     def _average_rating_student(self):
         res_list = []
         res_average = 0
@@ -44,10 +45,10 @@ class Mentor:
         self.name = name
         self.surname = surname
         self.courses_attached = []
+        self.grades_lecture = {}
 
 
 class Lecturer(Mentor):
-    grades_lecture = {}
 
     def _average_rating_lecturer(self):
         res_list = []
@@ -83,6 +84,66 @@ class Reviewer(Mentor):
 
     def __str__(self):
         return f"Имя: {self.name}\nФамилия: {self.surname}"
+
+
+
+best_student = Student('Ivan', 'Ivanov', 'Men')
+best_student_2 = Student('Oleg', 'Sidorov', 'Men')
+
+cool_mentor = Mentor('Ivan', 'Petrov')
+cool_mentor_2 = Mentor('Vasiliy', 'Fadeev')
+
+super_lecturer = Lecturer('Petr', 'Ivanov')
+super_lecturer_2 = Lecturer('Denis', 'Petrov')
+
+reviewer = Reviewer('Vladimir', 'Isaev')
+reviewer_2 = Reviewer('Vlasiliy', 'Mamontov')
+
+best_student.finished_courses += ['Python']
+best_student_2.finished_courses += ['Python']
+best_student.courses_in_progress += ['Python']
+best_student_2.courses_in_progress += ['Python']
+
+reviewer.courses_attached += ['Python']
+reviewer_2.courses_attached += ['Python']
+
+super_lecturer.courses_attached += ['Python']
+super_lecturer_2.courses_attached += ['Python']
+
+best_student.rate_hw_lector(super_lecturer, 'Python', 9)
+best_student.rate_hw_lector(super_lecturer, 'Python', 10)
+best_student.rate_hw_lector(super_lecturer_2, 'Python', 7)
+best_student.rate_hw_lector(super_lecturer_2, 'Python', 8)
+
+reviewer.rate_hw(best_student, 'Python', 10)
+reviewer.rate_hw(best_student, 'Python', 10)
+reviewer.rate_hw(best_student_2, 'Python', 8)
+reviewer.rate_hw(best_student_2, 'Python', 9)
+
+print(best_student.grades)
+print('---------------------')
+print(best_student_2.grades)
+print('')
+print(super_lecturer.grades_lecture)
+print('---------------------')
+print(super_lecturer_2.grades_lecture)
+print('')
+print(reviewer)
+print('---------------------')
+print(reviewer_2)
+print('')
+print(super_lecturer)
+print('---------------------')
+print(super_lecturer_2)
+print('')
+print(best_student)
+print('---------------------')
+print(best_student_2)
+print('')
+print(best_student < best_student_2)
+print('')
+print(super_lecturer < super_lecturer_2)
+
 
 
 
