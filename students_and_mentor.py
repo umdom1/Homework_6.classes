@@ -145,5 +145,34 @@ print('')
 print(super_lecturer < super_lecturer_2)
 
 
+student_list = []
+student_list.append(best_student)
+student_list.append(best_student_2)
 
+lecturer_list = []
+lecturer_list.append(lector)
+lecturer_list.append(lector_2)
+
+def average_student(student_list, course):
+  res = 0
+  res_len = 0
+  for student in student_list:
+    for el in student.grades[course]:
+      res += el
+    res_len += len(student.grades[course])
+  print(res/res_len)
+
+
+def average_lecturer(lecturer_list, course):
+  res = 0
+  res_len = 0
+  for lecturer in lecturer_list:
+    for el in lecturer.grades_lecture[course]:
+      res += el
+    res_len += len(lecturer.grades_lecture[course])  
+  print(res/res_len)
+    
+  
+average_student(student_list, 'Python')
+average_lecturer(lecturer_list, 'Python')
 
